@@ -1,0 +1,70 @@
+.hidden {
+  visibility: hidden;
+}
+
+.date {
+  display: flex;
+  justify-content: center;
+}
+
+.date-picker-title {
+  color: #e17c64;
+}
+
+.date-picker-input {
+  margin-bottom: 10px;
+}
+
+.calendar {
+  display: flex;
+  flex-direction: column;
+  width: 19rem;
+
+  box-shadow: 1px 2px 10px 0px #9b9596;
+}
+
+/******************** calendar-nav  스타일링 ***********************/
+.calendar-nav {
+  display: flex;
+  justify-content: space-around;
+
+  background-color: #44c379;
+  color: white;
+
+  border-radius: 4px 4px 0 0;
+}
+
+i {
+  color: white;
+}
+
+.calendar-nav-month-year {
+  padding: 15px 0;
+}
+
+button {
+  height: 20px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin-top: 22px;
+}
+
+.calendar-nav-left-btn {
+  position: relative;
+  top: 100px;
+}
+
+/* 그리드 */
+.calendar-grid {
+  width: 100%;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  grid-template-columns: repeat(7, 20px);
+  grid-gap: 1em;
+
+  /*   border: 1px solid red; */
+}
