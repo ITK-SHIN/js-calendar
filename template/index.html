@@ -1,84 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>JS-MISSION4 구현하기</title>
-        <link rel="stylesheet" href="style.css">
 
         <script src="https://kit.fontawesome.com/d47cd50f60.js" crossorigin="anonymous"></script>
-        <script type="module" src="app.js"></script>
+
+        <link rel="stylesheet" href="style.css">
+
+        <script type="module" src="./app.js"></script>
 </head>
 
 <body>
         <input type="date">
 
-
         <div class="date">
 
                 <div class="date-picker">
                         <h1 class="date-picker-title">Date Picker</h1>
-                        <input class="date-picker-input" type="text" placeholder="Select date" readonly>
+                        <input class="date-picker-input" type="text" placeholder="Select date" readonly />
 
                         <div class="calendar">
                                 <div class="calendar-nav">
-                                        <button calss="calendar-nav-left-btn"><i
-                                                        class="fa-solid fa-caret-left"></i></button>
+                                        <button class="calendar-nav-btn go-prev">
+                                                <i class="fa-solid fa-caret-left"></i>
+                                        </button>
                                         <div class="calendar-nav-month-year">
                                                 <div class="month">June</div>
                                                 <div class="year">2023</div>
                                         </div>
-                                        <button calss="calendar-nav-right-btn"><i
-                                                        class="fa-solid fa-caret-right"></i></button>
+                                        <button class="calendar-nav-btn go-next">
+                                                <i class="fa-solid fa-caret-right"></i>
+                                        </button>
                                 </div>
 
                                 <div class="calendar-grid">
-                                        <div class="day-of-the-week">SUN</div>
-                                        <div class="day-of-the-week">MON</div>
-                                        <div class="day-of-the-week">TUE</div>
-                                        <div class="day-of-the-week">WED</div>
-                                        <div class="day-of-the-week">THU</div>
-                                        <div class="day-of-the-week">FRI</div>
-                                        <div class="day-of-the-week">SAT</div>
-                                        <div class="day-of-the-week">SAT</div>
-                                        <div class="day-of-the-week">SAT</div>
-                                        <div class="day-of-the-week">SAT</div>
-                                        <div class="day-of-the-week">SAT</div>
-                                        <div class="day-of-the-week">SAT</div>
-                                        <div class="day-of-the-week">SAT</div>
-                                        <div class="day-of-the-week">SAT</div>
-                                        <div class="day-of-the-week">SAT</div>
-                                        <div class="day-of-the-week">SAT</div>
-                                        <div class="day-of-the-week">SAT</div>
-                                        <div class="day-of-the-week">SAT</div>
-                                        <div class="day-of-the-week">SAT</div>
-                                        <div class="day-of-the-week">SAT</div>
-                                        <div class="day-of-the-week">SAT</div>
-                                        <div class="day-of-the-week">SAT</div>
-                                        <div class="day-of-the-week">SAT</div>
-                                        <div class="day-of-the-week">SAT</div>
-                                        <div class="day-of-the-week">SAT</div>
-                                        <div class="day-of-the-week">SAT</div>
-                                        <div class="day-of-the-week">SAT</div>
-                                        <div class="day-of-the-week">SAT</div>
-                                        <div class="day-of-the-week">SAT</div>
-                                        <div class="day-of-the-week">SAT</div>
-                                        <div class="day-of-the-week">SAT</div>
-                                        <div class="day-of-the-week">SAT</div>
-                                        <div class="day-of-the-week">SAT</div>
-                                        <div class="day-of-the-week">SAT</div>
-                                        <div class="day-of-the-week">SAT</div>
-                                        <div class="day-of-the-week">SAT</div>
-                                        <div class="day-of-the-week">SAT</div>
-                                        <div class="day-of-the-week">SAT</div>
-                                        <div class="day-of-the-week">SAT</div>
-                                        <div class="day-of-the-week">SAT</div>
-                                        <div class="day-of-the-week">SAT</div>
-                                        <div class="day-of-the-week">SAT</div>
-                                        <div class="day-of-the-week">SAT</div>
-                                        <div class="day-of-the-week">SAT</div>
+                                        <div class="days">
+                                                <div class="day-of-the-week">SUN</div>
+                                                <div class="day-of-the-week">MON</div>
+                                                <div class="day-of-the-week">TUE</div>
+                                                <div class="day-of-the-week">WED</div>
+                                                <div class="day-of-the-week">THU</div>
+                                                <div class="day-of-the-week">FRI</div>
+                                                <div class="day-of-the-week">SAT</div>
+                                        </div>
+                                        <div class="all-days"></div>
+
                                 </div>
                         </div>
                 </div>

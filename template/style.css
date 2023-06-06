@@ -1,5 +1,7 @@
-.hidden {
-  visibility: hidden;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .date {
@@ -26,7 +28,10 @@
 /******************** calendar-nav  스타일링 ***********************/
 .calendar-nav {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
 
   background-color: #44c379;
   color: white;
@@ -39,24 +44,35 @@ i {
 }
 
 .calendar-nav-month-year {
+  text-align: center;
   padding: 15px 0;
 }
 
-button {
+.calendar-nav-btn {
   height: 20px;
   border: none;
   background-color: transparent;
   cursor: pointer;
   margin-top: 22px;
+
+  font-size: 20px;
 }
 
-.calendar-nav-left-btn {
-  position: relative;
-  top: 100px;
+.go-prev {
+  position: absolute;
+  top: 0;
+  left: 40px;
+}
+
+.go-next {
+  position: absolute;
+  top: 0;
+  right: 40px;
 }
 
 /* 그리드 */
-.calendar-grid {
+.days,
+.all-days {
   width: 100%;
   margin-top: 0.5rem;
   margin-bottom: 1rem;
@@ -67,4 +83,35 @@ button {
   grid-gap: 1em;
 
   /*   border: 1px solid red; */
+}
+
+.all-day:nth-child(7n + 1) {
+  color: red;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.day-of-the-week,
+.other {
+  opacity: 0.3;
+}
+
+.today {
+  position: relative;
+}
+
+.today::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  width: 30px;
+  height: 30px;
+  display: block;
+  border: 1px solid #44c379;
+  border-radius: 50%;
+  content: ' ';
 }
