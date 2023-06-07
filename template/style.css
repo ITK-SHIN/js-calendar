@@ -7,6 +7,7 @@
 .date {
   display: flex;
   justify-content: center;
+  margin-bottom: 30px;
 }
 
 .date-picker-title {
@@ -20,7 +21,7 @@
 .calendar {
   display: flex;
   flex-direction: column;
-  width: 19rem;
+  width: 17rem;
 
   box-shadow: 1px 2px 10px 0px #9b9596;
 }
@@ -87,6 +88,22 @@ i {
 
 .all-day:nth-child(7n + 1) {
   color: red;
+}
+
+.all-days {
+  position: relative;
+}
+
+.this:hover,
+.other:hover {
+  cursor: pointer;
+}
+
+.this:hover::before,
+.other:hover::after {
+  background-color: #44c379;
+  border-radius: 50%;
+  text-align: center;
 }
 
 .hidden {

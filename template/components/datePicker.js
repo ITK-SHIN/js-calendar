@@ -1,26 +1,13 @@
-import Calendar from './calendar.js';
+import renderCalender from './calendar.js';
+import rendarDefaultCalendar from './defaultCalendar.js';
 
-const DatePicker = () => {
-  let element = document.createElement('div');
-  element.className = 'date-picker';
+const DatePicker = ($container) => {
+  let rendarDefaultCalendarElement = rendarDefaultCalendar($container);
 
-  element.insertAdjacentHTML(
-    'beforeend',
-    `<h1 class="date-picker-title">Date Picker</h1>`,
-  );
+  /*   const calendarElement = renderCalender(new Date());
+  rendarDefaultCalendarElement.appendChild(calendarElement);
 
-  let inputElement = document.createElement('input');
-  inputElement.type = 'text';
-  inputElement.className = 'date-picker-input';
-  inputElement.placeholder = 'select date';
-  inputElement.readOnly = true;
-
-  element.appendChild(inputElement);
-
-  const calendarElement = Calendar(new Date());
-  element.appendChild(calendarElement);
-
-  inputElement.addEventListener('click', function () {
+  inputElement.addEventListener('click', () => {
     const calendarElement = element.querySelector('.calendar');
 
     if (calendarElement.classList.contains('hidden')) {
@@ -28,9 +15,9 @@ const DatePicker = () => {
     } else {
       calendarElement.classList.add('hidden');
     }
-  });
+  }); */
 
-  return element;
+  return rendarDefaultCalendarElement;
 };
 
 export default DatePicker;
