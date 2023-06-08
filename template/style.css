@@ -12,6 +12,7 @@
 
 .date-picker-title {
   color: #e17c64;
+  margin-bottom: 30px;
 }
 
 .date-picker-input {
@@ -99,11 +100,20 @@ i {
   cursor: pointer;
 }
 
-.this:hover::before,
-.other:hover::after {
+.previous-day:hover,
+.all-day:hover,
+.next-day:hover {
   background-color: #44c379;
   border-radius: 50%;
   text-align: center;
+  width: 30px;
+  height: 30px;
+}
+
+.this,
+.other {
+  height: 2rem;
+  line-height: 1.9rem;
 }
 
 .hidden {

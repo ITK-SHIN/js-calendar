@@ -26,13 +26,11 @@ $containers.forEach(($container) => {
 
   const otherDays = $container.querySelectorAll('.other');
   const thisDays = $container.querySelectorAll('.this');
-  console.log(otherDays);
-  console.log(thisDays);
 
   otherDays.forEach((otherDay) =>
     otherDay.addEventListener('click', (e) => {
       console.log(e.currentTarget);
-      inputElement.value = e.currentTarget;
+      inputElement.value = e.target.value;
     }),
   );
 
@@ -41,4 +39,8 @@ $containers.forEach(($container) => {
       console.log(e.currentTarget);
     });
   });
+});
+
+window.addEventListener('click', (e) => {
+  console.log(e.target);
 });
