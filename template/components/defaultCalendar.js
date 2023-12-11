@@ -1,5 +1,5 @@
 const rendarDefaultCalendar = () => {
-  let element = document.createElement('div');
+  const element = document.createElement('div');
   element.className = 'date-picker';
 
   element.insertAdjacentHTML(
@@ -7,7 +7,7 @@ const rendarDefaultCalendar = () => {
     `<h1 class="date-picker-title">Date Picker</h1>`,
   );
 
-  let inputElement = document.createElement('input');
+  const inputElement = document.createElement('input');
   inputElement.type = 'text';
   inputElement.className = 'date-picker-input';
   inputElement.placeholder = 'Select date';
@@ -15,7 +15,7 @@ const rendarDefaultCalendar = () => {
 
   element.appendChild(inputElement);
 
-  let rendarDefaultCalendar = document.createElement('div');
+  const rendarDefaultCalendar = document.createElement('div');
   rendarDefaultCalendar.className = 'calendar';
 
   rendarDefaultCalendar.insertAdjacentHTML(

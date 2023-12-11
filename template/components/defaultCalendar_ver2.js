@@ -1,25 +1,9 @@
-<!DOCTYPE html>
-<html lang="ko">
+const rendarDefaultCalendar = () => {
+  const element = document.createElement('div');
+  element.className = 'date-picker';
 
-<head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>JS-MISSION4 구현하기</title>
-        <link rel="stylesheet" href="style.css">
-        <script src="https://kit.fontawesome.com/d47cd50f60.js" crossorigin="anonymous"></script>
-        <script type="module" src="./app.js" defer></script>
-</head>
-
-<body>
-        <!-- <input type="date"> -->
-
-        <!--   <div class="date"></div>
-        <div class="date"></div> -->
-        <div class="date">
-
-                <!--  <div class="date-picker">
-                        <h1 class="date-picker-title">Date Picker</h1>
+  element.innerHTML = `
+  <h1 class="date-picker-title">Date Picker</h1>
                         <input class="date-picker-input" type="text" placeholder="Select date" readonly />
 
                         <div class="calendar">
@@ -49,10 +33,9 @@
                                         <div class="all-days"></div>
                                 </div>
                         </div>
+  `;
 
-                </div> -->
+  return element;
+};
 
-        </div>
-</body>
-
-</html>
+export default rendarDefaultCalendar;

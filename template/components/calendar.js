@@ -17,9 +17,9 @@ const renderCalender = ($container, date = new Date()) => {
     'December',
   ];
 
-  const viewMonth = monthArr[date.getMonth()];
+  const viewMonth = monthArr[date.getMonth()]; // 11
 
-  $container.querySelector('.month').textContent = `${viewMonth}`;
+  $container.querySelector('.month').textContent = `${viewMonth}`; // textContent와 유사한 innerText 프로퍼티가 있지만, 어떠한 이유로 textContent 쓰는것이 좋다.
   $container.querySelector('.year').textContent = `${viewYear}`;
 
   const prevLast = new Date(viewYear, viewMonthNum, 0); //Wed May 31 2023 00:00:00 GMT+0900 (한국 표준시) -전 달 마지막날

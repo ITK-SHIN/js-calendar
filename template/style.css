@@ -98,11 +98,6 @@ i {
 .this:hover,
 .other:hover {
   cursor: pointer;
-}
-
-.previous-day:hover,
-.all-day:hover,
-.next-day:hover {
   background-color: #44c379;
   border-radius: 50%;
   text-align: center;
@@ -112,8 +107,8 @@ i {
 
 .this,
 .other {
-  height: 2rem;
-  line-height: 1.9rem;
+  height: 1.9rem;
+  line-height: 2rem;
 }
 
 .hidden {

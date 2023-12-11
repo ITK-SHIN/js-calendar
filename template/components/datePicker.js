@@ -1,21 +1,7 @@
-import renderCalender from './calendar.js';
-import rendarDefaultCalendar from './defaultCalendar.js';
+import rendarDefaultCalendar from './defaultCalendar_ver2.js';
 
 const DatePicker = ($container) => {
-  let rendarDefaultCalendarElement = rendarDefaultCalendar($container);
-
-  /*   const calendarElement = renderCalender(new Date());
-  rendarDefaultCalendarElement.appendChild(calendarElement);
-
-  inputElement.addEventListener('click', () => {
-    const calendarElement = element.querySelector('.calendar');
-
-    if (calendarElement.classList.contains('hidden')) {
-      calendarElement.classList.remove('hidden');
-    } else {
-      calendarElement.classList.add('hidden');
-    }
-  }); */
+  const rendarDefaultCalendarElement = rendarDefaultCalendar($container);
 
   return rendarDefaultCalendarElement;
 };
