@@ -87,27 +87,6 @@ const renderCalender = ($container, date = new Date()) => {
     Today.classList.add('today');
   }
 
-  /* 버튼 클릭시 */
-  /*   const prevBtn = $container.querySelector('.go-prev');
-  const nextBtn = $container.querySelector('.go-next');
-
-  const prevMonth = () => {
-    prevBtn.removeEventListener('click', prevMonth);
-    nextBtn.removeEventListener('click', nextMonth);
-    date.setMonth(date.getMonth() - 1); // 전 달로 지정하고, renderCalender 호출
-    renderCalender($container, date);
-  };
-
-  const nextMonth = () => {
-    nextBtn.removeEventListener('click', nextMonth);
-    prevBtn.removeEventListener('click', prevMonth);
-    date.setMonth(date.getMonth() + 1); // 다음 달로 지정하고, renderCalender 호출
-    renderCalender($container, date);
-  };
-
-  prevBtn.addEventListener('click', prevMonth);
-  nextBtn.addEventListener('click', nextMonth); */
-
   return calendarGrid;
 };
 
