@@ -96,8 +96,8 @@ i {
   position: relative;
 }
 
-.this:hover,
-.other:hover {
+.thisMonth:hover,
+.otherMonth:hover {
   cursor: pointer;
   background-color: #44c379;
   border-radius: 50%;
@@ -106,8 +106,8 @@ i {
   height: 30px;
 }
 
-.this,
-.other {
+.thisMonth,
+.otherMonth {
   height: 1.9rem;
   line-height: 2rem;
 }
@@ -117,7 +117,7 @@ i {
 }
 
 .day-of-the-week,
-.other {
+.otherMonth {
   opacity: 0.3;
 }
 
