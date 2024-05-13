@@ -1,46 +1,93 @@
-import DatePicker from './components/datePicker.js';
+import makeDatePicker from './components/datePicker.js';
 import renderCalender from './components/calendar_ver2.js';
 
 const $containers = [...document.querySelectorAll('.date')];
 
 $containers.forEach(($container) => {
-  $container.appendChild(DatePicker($container)); /* 달력 윗부분까지 만들기 */
-  renderCalender($container); /* 달력 변경되는 부분 만들기 */
-
-  /*================== 달력 숨기기 기능 ==============================*/
-  const $datePicker = document.querySelector('.date-picker');
+  /* 오늘 일자 기준으로 초기 달력  만들기 */
+  const getCalendarDates = makeDatePicker($container);
+  const $datePicker = $container.querySelector('.date-picker');
   const $datePickerInput = $container.querySelector('.date-picker-input');
   const $calendar = $container.querySelector('.calendar');
 
-  //$calendar.classList.add('hidden');
-  /*
-  closest() 메서드는 주어진 CSS 선택자와 일치하는 요소를 찾을 때까지, 
-  자기 자신을 포함해 위쪽(부모 방향, 문서 루트까지)으로 문서 트리를 순회합니다.
-  */
-  // 캘린더 외부 클릭시 달력 제거하기
-  window.addEventListener('click', (e) => {
+  /*================== 달력 숨기기 기능 ==============================*/
+  $calendar.classList.add('hidden');
+
+  const disappearCalendar = (e) => {
     if (!e.target.closest('.calendar') && e.target !== $datePickerInput) {
       $calendar.classList.add('hidden');
       return;
     }
-  });
+  };
 
-  $datePicker.addEventListener('click', (e) => {
-    // 달력의 일들을 누를 경우만 실행
+  let nextYear = getCalendarDates.getYear;
+  let nextMon = getCalendarDates.getMonth;
+  let nextDate = getCalendarDates.getDate > 27 ? 1 : getCalendarDates.getDate;
+
+  const clickCalendarDate = (e) => {
+    // e.stopPropagation();
     if (e.target.matches('.calendar > div > .all-days > div')) {
       $calendar.classList.add('hidden');
       e.target.classList.add('selected');
-      /*    console.log(e.target);
-      console.log(123); */
     }
 
     if (e.target === $datePickerInput) {
-      if ($datePickerInput.value !== '') {
-        renderCalender($container, undefined, $datePickerInput.value);
+      if (
+        $datePickerInput.value !== '' &&
+        $datePickerInput.classList.contains('hidden')
+      ) {
+        const getReCalendarDates = renderCalender(
+          $container,
+          $datePickerInput.value,
+        );
+        nextYear = getReCalendarDates.getYear;
+        nextMon = getReCalendarDates.getMonth;
+        nextDate = getReCalendarDates.getDate;
+        console.log(
+          `inputClick -> nextYear : ${nextYear} nextMon : ${nextMon} nextDate : ${nextDate}`,
+        );
         $calendar.classList.toggle('hidden');
       } else {
         $calendar.classList.toggle('hidden');
       }
     }
-  });
+  };
+
+  /*============= 버튼 클릭시 전달, 다음달로 이동 기능 ===============*/
+  const $prevBtn = $container.querySelector('.go-prev');
+  const $nextBtn = $container.querySelector('.go-next');
+
+  const prevMonth = () => {
+    const setDate = new Date(`${nextYear}-${nextMon}-${nextDate}`);
+    console.log('prev');
+    setDate.setMonth(nextMon - 2);
+    const getReCalendarDates = renderCalender($container, setDate);
+    nextYear = getReCalendarDates.getYear;
+    nextMon = getReCalendarDates.getMonth;
+    nextDate = getReCalendarDates.getDate;
+    console.log(
+      `prevClick -> nextYear : ${nextYear} nextMon : ${nextMon} nextDate : ${nextDate}`,
+    );
+  };
+
+  const nextMonth = () => {
+    const setDate = new Date(`${nextYear}-${nextMon}-${nextDate}`);
+    console.log('next');
+    setDate.setMonth(nextMon); // 다음 달로 지정하고, renderCalender 호출
+    const getReCalendarDates = renderCalender($container, setDate);
+    nextYear = getReCalendarDates.getYear;
+    nextMon = getReCalendarDates.getMonth;
+    nextDate = getReCalendarDates.getDate;
+    console.log(
+      `nextClick -> nextYear : ${nextYear} nextMon : ${nextMon} nextDate : ${nextDate}`,
+    );
+  };
+
+  $prevBtn.addEventListener('click', prevMonth);
+  $nextBtn.addEventListener('click', nextMonth);
+
+  /* ================================================== */
+
+  $datePicker.addEventListener('click', clickCalendarDate);
+  window.addEventListener('click', disappearCalendar);
 });

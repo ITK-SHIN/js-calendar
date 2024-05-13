@@ -36,7 +36,7 @@
 
   position: relative;
 
-  background-color: #44c379;
+  background-color: #c344b2;
   color: white;
 
   border-radius: 15px 15px 0 0;
@@ -99,7 +99,7 @@ i {
 .thisMonth:hover,
 .otherMonth:hover {
   cursor: pointer;
-  background-color: #44c379;
+  background-color: #c344b2;
   border-radius: 50%;
   text-align: center;
   width: 30px;
@@ -134,7 +134,7 @@ i {
   width: 30px;
   height: 30px;
   display: block;
-  border: 1px solid #44c379;
+  border: 1px solid #c344b2;
   border-radius: 50%;
   content: ' ';
 }

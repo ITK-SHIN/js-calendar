@@ -1,17 +1,22 @@
-import { getLastDayOfMonth, getLastDayOfDay } from './utils/getDate.mjs';
+import { getLastDayOfMonth, getLastDayOfDay } from '../utils/getDate.mjs';
 
-const renderCalender = ($container, reDate, date = new Date()) => {
+const renderCalender = ($container, date = new Date(), reDate) => {
+  console.log('rendering Calender rendering Calender rendering Calender');
   let getYear;
   let getMonth;
   let getDate;
   let newDate = date;
 
   if (reDate) {
+    console.log('input값 있을때');
     newDate = new Date(reDate);
-    getYear = newDate.getFullYear(); //2023 (오늘 년도)  // getFullYear -> 연도 나타내는 정수
-    getMonth = newDate.getMonth() + 1; // 12 (오늘 월)  // getMonth -> 0 ~ 11 정수
-    getDate = newDate.getDate(); // 11 (오늘 일) // getDate ->  1 ~31 정수
+    console.log(`date : ${reDate}`);
+    console.log(`newDate : ${newDate}`);
+    getYear = newDate.getFullYear(); //2023 (오늘 년도)
+    getMonth = newDate.getMonth() + 1; // 12 (오늘 월)
+    getDate = newDate.getDate(); // 11 (오늘 일)
   } else {
+    console.log(`input값 빈 문자열일 떄`);
     getYear = date.getFullYear(); //2023 (오늘 년도)
     getMonth = date.getMonth() + 1; // 12 (오늘 월)
     getDate = date.getDate(); // 11 (오늘 일)
@@ -32,7 +37,9 @@ const renderCalender = ($container, reDate, date = new Date()) => {
     'December',
   ];
 
-  const viewMonth = monthArr[getMonth - 1] ?? monthArr[date.getMonth()];
+  console.log(`getMonth: ${getMonth}`);
+  const viewMonth = monthArr[getMonth - 1] ?? monthArr[date.getMonth()]; // null 병합 연산자로 변수 기본값 설정
+  console.log(`viewMonth : ${viewMonth}`);
   $container.querySelector('.month').textContent = `${viewMonth}`; // textContent와 유사한 innerText 프로퍼티가 있지만, 어떠한 이유로 textContent 쓰는것이 좋다.
   $container.querySelector('.year').textContent = `${getYear}`;
 
@@ -153,9 +160,40 @@ const renderCalender = ($container, reDate, date = new Date()) => {
 
   $calendarGrid.addEventListener('click', getDatePickerValue);
 
-  /* inputElement.value에 있는 날에 selected 클래스 주기 */
+  /* inutElement.value에 있는 날에 selected 클래스 주기 */
 
-  return { getYear, getMonth, getDate };
+  /*============= 버튼 클릭시 전달, 다음달로 이동 기능 ===============*/
+  const $prevBtn = $container.querySelector('.go-prev');
+  const $nextBtn = $container.querySelector('.go-next');
+  const setDate = new Date(`${getYear}-${getMonth}-${getDate}`);
+  console.log(`setDate : ${setDate}`);
+  const manufactureMonth =
+    getMonth + 1 > 12 ? (getMonth + 1) % 12 : getMonth + 1; // Month가 9보다 작은경우, 0을 붙여준다.
+
+  const prevMonth = () => {
+    setDate.setMonth(getMonth - 2);
+    renderCalender($container, setDate);
+
+    $prevBtn.removeEventListener('click', prevMonth);
+    $nextBtn.removeEventListener('click', nextMonth);
+  };
+
+  const nextMonth = () => {
+    //1. 현재 달력의 월을 가져 온다.
+    //2. 가져온 월에서 +1을해서 setMonth를 호출한다
+    //3. renderCalender로 리 랜더링한다.
+    setDate.setMonth(manufactureMonth); // 다음 달로 지정하고, renderCalender 호출
+    renderCalender($container, setDate);
+
+    $nextBtn.removeEventListener('click', nextMonth);
+    $prevBtn.removeEventListener('click', prevMonth);
+  };
+
+  $prevBtn.addEventListener('click', prevMonth);
+  $nextBtn.addEventListener('click', nextMonth);
+  /* ================================================== */
+
+  return $calendarGrid;
 };
 
 export default renderCalender;

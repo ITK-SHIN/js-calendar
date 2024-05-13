@@ -1,10 +1,6 @@
-// rendarDefaultCalendar는 달력의 바뀌지 않는 기본 틀을 만드는 함수이다.
-
-const rendarDefaultCalendar = () => {
-  const element = document.createElement('div');
-  element.className = 'date-picker';
-
-  element.innerHTML = `
+const renderDefaultCalendar = ($container) => {
+  $container.innerHTML = `
+  <div class="date-picker">
   <h1 class="date-picker-title">Date Picker</h1>
                         <input class="date-picker-input" type="text" placeholder="Select date" readonly />
 
@@ -35,9 +31,8 @@ const rendarDefaultCalendar = () => {
                                         <div class="all-days"></div>
                                 </div>
                         </div>
+                        </div>
   `;
-
-  return element;
 };
 
-export default rendarDefaultCalendar;
+export default renderDefaultCalendar;
